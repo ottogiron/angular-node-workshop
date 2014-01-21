@@ -35,6 +35,8 @@ require('./lib/config/express')(app);
 // Routing
 require('./lib/routes')(app);
 
+console.log("The configuration port is:"+config.port);
+
 // Start server
 app.listen(config.port, function () {
   console.log('Express server listening on port %d in %s mode', config.port, app.get('env'));

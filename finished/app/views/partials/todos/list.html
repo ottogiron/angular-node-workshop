@@ -1,0 +1,34 @@
+<div ng-include="'partials/navbar'"></div>
+<div class="row">
+	<form role="form">
+		<div class="form-group">			
+			<input type="text" ng-keypress="addTodo($event)" ng-model="todo.title" class="form-control" id="todoTitle" placeholder="What needs to be done?" autofocus="">
+		</div>		
+	</form>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title">Todo List</h3>
+		</div>
+		<div class="panel-body">
+			<table class="table">
+				<colgroup>
+					<col width="10%" />
+					<col />
+					<col width="10%" />
+				</colgroup>
+				<tbody ng-repeat="todo in todos">
+					<tr ng-class="{active: todo.complete}">
+						<td><input type="checkbox" ng-model="todo.complete" ng-change = "update(todo)"/></td>
+						<td><p ng-class="{strike: todo.complete}">{{todo.title}}</p></td>
+						<td><a href ng-click="del(todo)">X</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="footer">
+	<p>
+		♥ from the Otto team
+	</p>
+</div>

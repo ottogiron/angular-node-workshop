@@ -1,7 +1,30 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-  Thing = mongoose.model('Thing');
+  Thing = mongoose.model('Thing'),
+  Todo = mongoose.model('Todo');
+
+
+Todo.find({}).remove(function(){
+	Todo.create({
+		title: 'Task 1',
+		complete: true
+	},
+	{
+		title: 'Task 2',
+		complete: false
+	},
+	{
+		title: 'Task 3',
+		complete: false
+	},
+	{
+		title: 'Task 4',
+		complete: true
+	},function(){
+		console.log("Finished created todo samples");
+	});
+});
 
 /**
  * Populate database with sample application data
@@ -34,3 +57,6 @@ Thing.find({}).remove(function() {
     }
   );
 });
+
+
+

@@ -4,17 +4,26 @@ angular.module('finishedApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'restangular'
 ])
-  .config(function ($routeProvider, $locationProvider) {
+  .config(function ($routeProvider, $locationProvider,RestangularProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'partials/main',
         controller: 'MainCtrl'
       })
-      .otherwise({
+      .when('/todos', {
+        templateUrl: 'partials/todos/list',
+        controller: 'TodoCtrl'
+      })
+     .otherwise({
         redirectTo: '/'
       });
       
-    $locationProvider.html5Mode(true);
+      RestangularProvider.setRestangularFields({
+                id:'_id'
+        });
+      
+    //$locationProvider.html5Mode(true);
   });

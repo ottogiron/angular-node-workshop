@@ -5,6 +5,10 @@ angular.module('finishedApp')
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
+    },
+    {
+    	'title': 'Todos',
+    	'link': '#todos'
     }];
     
     $scope.isActive = function(route) {
